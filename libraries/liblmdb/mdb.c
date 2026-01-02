@@ -502,9 +502,9 @@ typedef pthread_mutex_t *mdb_mutexref_t;
  *	Changes to this code must be reflected in #MDB_LOCK_FORMAT.
  */
 #ifdef _WIN32
-#define MUTEXNAME_PREFIX		"Global\\MDB"
+#define MUTEXNAME_PREFIX		"Global\\LwMQ.LocalDb."
 #elif defined MDB_USE_POSIX_SEM
-#define MUTEXNAME_PREFIX		"/MDB"
+#define MUTEXNAME_PREFIX		"/LwMQ.LocalDb."
 #endif
 
 /** @} */
@@ -651,7 +651,7 @@ static txnid_t mdb_debug_start;
 	 *	There's nothing special about this value other than that it is easily
 	 *	recognizable, and it will reflect any byte order mismatches.
 	 */
-#define MDB_MAGIC	 0xBEEFC0DE
+#define MDB_MAGIC	 0x514d774c
 
 	/**	The version number for a database's datafile format. */
 #define MDB_DATA_VERSION	 ((MDB_DEVEL) ? 999 : 1)
@@ -4765,9 +4765,9 @@ typedef struct MDB_name {
 
 /** Filename suffixes [datafile,lockfile][without,with MDB_NOSUBDIR] */
 static const mdb_nchar_t *const mdb_suffixes[3][2] = {
-	{ MDB_NAME("/data.mdb"),      MDB_NAME("")      },
-	{ MDB_NAME("/lock.mdb"),      MDB_NAME("-lock") },
-	{ MDB_NAME("/data.mdb:lock"), MDB_NAME(":lock") }
+	{ MDB_NAME("/DATA"),      MDB_NAME("")      },
+	{ MDB_NAME("/LOCK"),      MDB_NAME(".lock") },
+	{ MDB_NAME("/DATA:LOCK"), MDB_NAME(":LOCK") }
 };
 
 #define MDB_SUFFLEN 14	/**< Max string length in #mdb_suffixes[] */
