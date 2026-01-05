@@ -242,7 +242,7 @@ typedef int mdb_filehandle_t;
 #define MDB_VERSION_DATE	__DATE__
 
 /** A stringifier for the version info */
-#define MDB_VERSTR(a,b,c,d)	"LwMQ LocalDb " #a "." #b "." #c ": (" d ")"
+#define MDB_VERSTR(a,b,c,d)	"LwMQ.KvStore " #a "." #b "." #c ": (" d ")"
 
 /** A helper for the stringifier macro */
 #define MDB_VERFOO(a,b,c,d)	MDB_VERSTR(a,b,c,d)

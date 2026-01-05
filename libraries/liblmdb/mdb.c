@@ -502,9 +502,9 @@ typedef pthread_mutex_t *mdb_mutexref_t;
  *	Changes to this code must be reflected in #MDB_LOCK_FORMAT.
  */
 #ifdef _WIN32
-#define MUTEXNAME_PREFIX		"Global\\LwMQ.LocalDb."
+#define MUTEXNAME_PREFIX		"Global\\LwMQ.KvStore."
 #elif defined MDB_USE_POSIX_SEM
-#define MUTEXNAME_PREFIX		"/LwMQ.LocalDb."
+#define MUTEXNAME_PREFIX		"/LwMQ.KvStore."
 #endif
 
 /** @} */
